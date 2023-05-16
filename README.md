@@ -12,7 +12,7 @@ Screenshots
 Candidates form
 ![img](https://github.com/Siddharthbadal/fincrm/blob/main/screenshots/hr-two.png)
 
-# forms with validations
+forms with validations
 ![img](https://github.com/Siddharthbadal/fincrm/blob/main/screenshots/hr-one.png)
 
 
