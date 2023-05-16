@@ -10,7 +10,7 @@ Project is work in Progress.
 Screenshots
 
 Candidates form
-![img](https://github.com/Siddharthbadal/fincrm/blob/main/screenshots/hr-two.png)
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-one.png?raw=true)
 
 forms with validations
 ![img](https://github.com/Siddharthbadal/fincrm/blob/main/screenshots/hr-one.png)
