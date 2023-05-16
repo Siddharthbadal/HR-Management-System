@@ -17,4 +17,4 @@ forms with validations
 
 
 Customized Admin panel
-![img](https://github.com/Siddharthbadal/fincrm/blob/main/screenshots/hr-admin.png)
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-two.png?raw=true)
