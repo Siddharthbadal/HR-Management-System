@@ -13,7 +13,7 @@ Candidates form
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-one.png?raw=true)
 
 forms with validations
-![img](https://github.com/Siddharthbadal/fincrm/blob/main/screenshots/hr-one.png)
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-admin.png?raw=true)
 
 
 Customized Admin panel
