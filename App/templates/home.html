@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="main">
+    <div class="container">
+<!-- messages -->
+
+{% if messages %}
+    {% for message in messages %} 
+
+        {% if message.tags %}
+                <div class="text-center alert alert-success alert-dismissible fade show mt-5 mb-3 bg-dark" role="alert" style="width:50%;">
+                    <strong class="text-secondary m-auto alert-heading text-light">
+                        {{ message }}
+                    </strong>
+                    <a href="{% url 'home' %}" type="button" class="close text-light text-lg" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true" class="text-lg">&times;</span>
+                    </a>
+                </div>
+        {% endif %}
+
+    {%  endfor %}
+{% endif %}
+
+
+
+<div class="container mt-5" style="width:95%; font-size:16px;">
+   
+    <div class="card p-3 border-dark text-center" style="font-size:18px;">
+        FullStack: SDE-1 &nbsp; Backend: BAC-1 &nbsp; Frontend: FRE-1
+    </div>
+
+    <form method="POST" action="" class="card p-3 mt-3" autocomplete="off" novalidate enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{ form | crispy}} for complete form -->
+           <div class="row ">
+                <div class="col-4 text-dark" >                    
+                    {{form.firstname|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.lastname|as_crispy_field}}
+                </div>            
+                <div class="col-4 text-dark">
+                    {{form.job|as_crispy_field}}
+                </div>            
+           </div>
+           
+           <div class="row">
+                <div class="col-4 text-dark">
+                    {{form.email|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.age|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.mobile|as_crispy_field}}
+                </div>
+            </div>
+           
+
+            <div class="row">
+                <div class="col-4 text-dark">
+                    {{form.gender|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.education|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.city|as_crispy_field}}
+                </div>
+                
+                
+            </div>
+
+            <hr style="border:1px solid black;">
+
+            <div class="row">
+                <div class="col-4 text-dark">
+                    {{form.position|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.experience|as_crispy_field}}
+                </div>
+                <div class="col-4 text-dark">
+                    {{form.salary|as_crispy_field}}
+                </div>
+                
+                
+            </div>
+            <div class="col-3 text-dark">
+                {{form.cloud|as_crispy_field}}
+            </div>
+
+        <div class="text-dark">
+                {{form.message|as_crispy_field}}
+         </div>
+           
+        <button type="submit" class="btn btn-outline-dark mt-5"  style="width:90px;">Submit</button>
+        
+
+    </form>
+
+</div>
+</div>
+</div>
+
+    
+   
+
+
+
+
+{% endblock %}
