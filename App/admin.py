@@ -1,13 +1,22 @@
 from django.contrib import admin
 from .models import Candidate
+from .forms import CandidateForm
 from django.utils.html import format_html
 
 # Register your models here.
 
 class candidateAdmin(admin.ModelAdmin):
+    radio_fields = {'education': admin.HORIZONTAL}
+    form = CandidateForm
+    # admin read only fields 
+    readonly_fields = ['experience','job','firstname', 'lastname', 'email', 'gender', 'age', 'mobile', 'city', 'education','position','salary','cloud', 'languages', 'frameworks','databases','other_skills','message', 'file', 'created_at']
+    # status is not the filed name but function
+    exclude = ['status']
+    
+
     list_filter=['app_status']
     list_display =['firstname', 'lastname', 'email','job', 'experience','status', '_' ]
-    search_fields = ['firstname', 'lastname', 'email', 'job', 'app_status', 'app_status']
+    search_fields = ['firstname', 'lastname', 'email', 'job', 'app_status']
     list_per_page = 20
 
     # function to change icon for list display

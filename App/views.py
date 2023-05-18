@@ -5,17 +5,18 @@ from django.contrib import messages
 
 
 def home(request):
-    form = CandidateForm(request.POST or None)
-    print("In form..")
-    print(form.is_valid())
-  
-    if form.is_valid():
-        print("form valid")
-        form.save()
-        print("form saved")
-        messages.success(request, "Registered Successfully")
-        return HttpResponseRedirect('/')
-    context = {
-        'form': form
-    }
-    return render(request, "home.html", context)
+    if request.method == 'POST':
+        form = CandidateForm(request.POST, request.FILES)        
+        print(form.is_valid())
+    
+        if form.is_valid():
+            print("form valid")
+            form.save()
+            print("form saved")
+            messages.success(request, "Registered Successfully")
+            return HttpResponseRedirect('/')
+        else:
+            return render(request, "home.html", {'form':form})
+    else:
+        form = CandidateForm()
+        return render(request, "home.html", {'form':form})
