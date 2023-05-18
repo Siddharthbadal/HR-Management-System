@@ -16,7 +16,6 @@ Project is work in Progress.
 Screenshots
 
 Candidates form
-<<<<<<< HEAD
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form1.png?raw=true)
 
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form2.png?raw=true)
@@ -32,13 +31,3 @@ main page
 
 
 
-=======
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-one.png?raw=true)
-
-forms with validations
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-admin.png?raw=true)
-
-
-Customized Admin panel
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/hr-two.png?raw=true)
->>>>>>> a6ab6cc25200e1486a72cd4534e2fc685b796e62
