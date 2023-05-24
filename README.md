@@ -20,8 +20,16 @@ User can access the registrtaion form and fill all the details.
 Details could be seen on the details page in the read only format by admin allowed users.
 Admin can update the status, and leave comments on the applications from admin panel.
 
+Form handling, 
+User Validations on fronted (for user inputs) and backend (for admin panel), 
+customized admin panel,
+control panel to manage fields
+forms widegts on multiple feilds to manage values, labels, and input
+File upload
+read only admin with status update
 
 Project is work in Progress.
+
 
 
 
@@ -36,8 +44,10 @@ Candidates Registration forms
 
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/candidates-details.png?raw=true)
 
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/login.png?raw=true)
+Candidates form
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form1.png?raw=true)
 
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form2.png?raw=true)
 
 forms validations
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/form-validation.png?raw=true)
