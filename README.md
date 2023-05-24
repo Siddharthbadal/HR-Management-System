@@ -4,14 +4,23 @@ A Human Resource Management job portal to manage applications and candidates det
 
 Few of the features:
     - Form handling 
+
     - User Validations on fronted (for user inputs) and backend (for admin panel) 
+
     - custom validations on individual form fields 
+
     - customized admin panel
+
     - control panel to manage form fields
+
     - forms widegts on multiple feilds to manage values, labels, and input
+
     - File upload
+
     - read only admin with status update
+
     - Read only feilds for external users
+    
     - Admin login
 
 
