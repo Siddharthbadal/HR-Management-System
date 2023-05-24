@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Candidtes Admin | HRM
+{% endblock title %}
+
+{% block nav-heading %}
+               
+               <i class="fas fa-cog"></i> &nbsp;Candidates Admin
+{% endblock nav-heading %}
+
+
+
+
+
+{% block content %}
+
+   <div class='container' style='width: 90%'>
+    <a href="{% url 'logout' %}" class='btn btn-outline-danger mt-3 mb-3 my-btn'>logout</a>
+   
+
+   <h5 class='card p-2 bg-secondary text-light text-center mb-3'>Candidates</h5>
+
+   <table class='table table-bordered text-center text-center'>
+    <thead class='table-secondary'>
+        <tr>
+            <th style="width:22%">Name </th>
+            <th style="width:25%">Email </th>
+            <th style="width:15%">Mobile </th>
+            <th style="width:5%">Gender </th>
+            <th style="width:15%">Job </th>
+            <th colspan="2" style="width:8%">Action </th>
+        </tr>
+        
+    </thead>
+
+    <tbody>
+        {% for candidate in candidates_data %}
+        <tr>
+            <td>{{ candidate.firstname}} {{candidate.lastname}}</td>
+            <td>{{ candidate.email }}  </td>
+            <td> {{ candidate.mobile }} </td>
+            <td> {{ candidate.gender }} </td>
+            <td>{{ candidate.job }}  </td>
+            <td class="bg-dark">
+                <a href="{% url 'candidate' candidate.id %}" class="btn btn-outline btn-sm text-light">
+                    <i class="fas fa-user-alt"></i>
+                </a>
+
+            </td>
+            {% empty %}
+            <td colspan='6' class='text-denger'>
+                <strong>No data avilable!</strong>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+   </table>
+
+
+
+
+</div>
+{% endblock content %}

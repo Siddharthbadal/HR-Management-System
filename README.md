@@ -1,27 +1,47 @@
 # HR Management System
 
-A platform to manage job applications.
+A Human Resource Management job portal to manage applications and candidates details.
 
-Form handling, 
-User Validations on fronted (for user inputs) and backend (for admin panel), 
-customized admin panel,
-control panel to manage fields
-forms widegts on multiple feilds to manage values, labels, and input
-File upload
-read only admin with status update
+Few of the features:
+    - Form handling 
+    - User Validations on fronted (for user inputs) and backend (for admin panel) 
+    - custom validations on individual form fields 
+    - customized admin panel
+    - control panel to manage form fields
+    - forms widegts on multiple feilds to manage values, labels, and input
+    - File upload
+    - read only admin with status update
+    - Read only feilds for external users
+    - Admin login
+
+
+### Process
+User can access the registrtaion form and fill all the details. 
+Details could be seen on the details page in the read only format by admin allowed users.
+Admin can update the status, and leave comments on the applications from admin panel.
+
 
 Project is work in Progress.
 
 
-Screenshots
 
-Candidates form
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form1.png?raw=true)
 
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form2.png?raw=true)
+Candidates Registration forms
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/register-form-1.png?raw=true)
+
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/register-form-1.png?raw=true)
+
+
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/candidates-list.png?raw=true)
+
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/candidates-details.png?raw=true)
+
+![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/login.png?raw=true)
+
 
 forms validations
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/form-validation.png?raw=true)
+
 
 ### Admin panel
 main page

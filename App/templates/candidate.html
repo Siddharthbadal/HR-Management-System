@@ -1,0 +1,22 @@
+
+{% extends 'register.html' %}
+
+
+{% block title %}
+    Candidate Details | HRM
+{% endblock title %}
+
+{% block nav-heading %}           
+        <i class="fas fa-user-alt"></i> 
+       &nbsp; Candidate Details
+{% endblock nav-heading %}
+
+
+
+{% block buttons %} 
+
+<a href="{% url 'backend' %}" class="btn btn-outline-dark btn-sm mt-2 my-app" >
+    Back
+</a>
+
+{% endblock buttons%}
