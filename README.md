@@ -3,6 +3,7 @@
 A Human Resource Management job portal to manage applications and candidates details.
 
 Few of the features:
+
     - Form handling 
 
     - User Validations on fronted (for user inputs) and backend (for admin panel) 
@@ -27,20 +28,19 @@ Few of the features:
 ### Process
 User can access the registrtaion form and fill all the details. 
 Details could be seen on the details page in the read only format by admin allowed users.
+Admin or user allowed by admin can access all the details of the registered user.
 Admin can update the status, and leave comments on the applications from admin panel.
 
-Form handling, 
-User Validations on fronted (for user inputs) and backend (for admin panel), 
-customized admin panel,
-control panel to manage fields
+Form handling wit user validations on fronted (for user inputs) and backend (for admin panel), 
+customized admin panel where admin can update the status and leave notes.
 forms widegts on multiple feilds to manage values, labels, and input
 File upload
-read only admin with status update
 
 Project is work in Progress.
 
 
-
+If images are not visible here, Please visit this link:
+https://drive.google.com/drive/folders/1er7UAC-zkNrj1bCFb7um7UH8WDR0ckUA?usp=share_link
 
 
 Candidates Registration forms

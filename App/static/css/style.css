@@ -4,7 +4,12 @@ html, body {
     max-width: 100%;
     overflow: hidden;
 }
-
+.my-btn{
+    width:90px;
+}
+.my-btn2{
+    width:45px;
+}
  /* button on register page */
 .my-app{
     width: 90px;;
@@ -24,3 +29,93 @@ a{
     height: 50px;
 }
 
+.page-item.active .page-link{
+    columns: #fff;
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+.pagination > li > a{
+    background-color: #fff;
+    color: #6c757d;
+}
+
+.pagination > li >a:focus,
+.pagination > lia:hover,
+.pagination > li > a:focus,
+.pagination > span > a:hover{
+    color: #111;
+    background-color: #d3d3d3;
+    border: 1px solid #6c757d;
+    box-shadow: none;
+}
+
+.f-size{
+    font-size: 24px;
+}
+
+.f-size2{
+    font-size: 20px;
+}
+
+
+/*  responsive */
+
+@media(max-width: 1199px){
+    .wd-100{
+        width: 90%;
+        padding: 1px;
+    }
+    .table thead{
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td{
+        display: block;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 15px;
+        border: 1px solid #111;
+        border-radius: 3px;
+    }
+
+    .table td{
+        text-align: right;
+        padding-left: 35%;
+        position: relative;
+        border: 1px solid transparent;
+    }
+    .table td::before{
+        content: attr(label);
+        position: absolute;
+        left:0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: left;
+    }
+    .table > thead > tr:first-child{
+        display: none;
+        margin-top: 5px;
+    }
+    #top-border{
+        background-color: #111;
+        color: #fff;
+    }
+    #sm-border{
+        border: 1px solid #a9a9a9;
+    }
+    #footer{
+        font-size: 13px;
+    }
+   
+    .res-btn{
+        width:20%;
+        
+       
+        
+    }
+
+
+}

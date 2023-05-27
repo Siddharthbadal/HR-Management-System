@@ -5,47 +5,141 @@
     Candidtes Admin | HRM
 {% endblock title %}
 
-{% block nav-heading %}
+{% block nav-content %}
                
-               <i class="fas fa-cog"></i> &nbsp;Candidates Admin
-{% endblock nav-heading %}
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse mt-3 mt-md-3 mt-lg-0" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-middle">
+      <li class="nav-item">
+        <a href="#" class='btn btn-light my-btn2' title='control-panel'>
+            <i class="fas fa-user-cog f-size2"> </i>
+        </a>
+        <a href="{% url 'admin:index' %}" targe="_blank" class='btn btn-warning my-btn2' title='Admin'>
+            <i class="fas fa-cog f-size2"> </i>
+        </a>
+        <a href="{% url 'logout' %}" class='btn btn-danger my-btn2' title='logout'>
+            <i class="fas fa-power-off f-size2"> </i>
+        </a>
+      </li>
+      
+      
+    </ul>
+    
+
+  <hr class='text-dark'>
+
+<!--  search -->
+<form class="d-flex">
+    <input class="form-control me-1" name='q' type="search" placeholder="Search" aria-label="Search" value="{{ request.GET.q}}">
+    <button class="btn btn-outline-light" title='search' type="submit">
+        <i class='fas fa-search'></i>
+    </button>
+    <a href="{% url 'backend' %}" class="btn btn-outline-info ms-1" title='Refresh'>
+        <i class='fas fa-sync-alt'></i>
+    </a>
+  </form>
+</div>
+
+
+
+
+{% endblock nav-content %}
+
 
 
 
 
 
 {% block content %}
+<div class="container" style="width:90%;">
 
-   <div class='container' style='width: 90%'>
-    <a href="{% url 'logout' %}" class='btn btn-outline-danger mt-3 mb-3 my-btn'>logout</a>
-   
+  <form method="POST" class="mt-5 mb-2">
+        {% csrf_token %}
+    <div class="btn-group wd-100" role="group" aaria-label="Basic radio toggle button group">
 
-   <h5 class='card p-2 bg-secondary text-light text-center mb-3'>Candidates</h5>
+        <input type="submit" class="btn-check" value="SDE-01" name="job" id="btnradio1" autocomplete="off">
+        <label {% if request.POST.job == 'SDE-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %} for="btnradio1">FullStack</label>
 
-   <table class='table table-bordered text-center text-center'>
+        <input type="submit" class="btn-check" value="BAC-01" name="job" id="btnradio2" autocomplete="off">
+        <label {% if request.POST.job == 'BAC-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio2">Backend</label>
+
+        <input type="submit" class="btn-check" value="FRE-01" name="job" id="btnradio3" autocomplete="off">
+        <label {% if request.POST.job == 'FRE-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio3">Fronted</label>
+
+        <input type="submit" class="btn-check" value="Fresher" name="experience" id="btnradio4" autocomplete="off">
+        <label {% if request.POST.experience == 'Fresher' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio4">Fresher</label>
+
+        <input type="submit" class="btn-check" value="Experience" name="experience" id="btnradio5" autocomplete="off">
+        <label {% if request.POST.experience == 'Experience' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio5">Experience</label>
+
+        
+
+    </div>
+  </form>
+
+
+
+
+
+
+   <h5 class='card p-2 bg-secondary text-light text-center mt-3 mb-3'>Candidates</h5>
+
+   <table class='table table-bordered text-center'>
     <thead class='table-secondary'>
         <tr>
             <th style="width:22%">Name </th>
-            <th style="width:25%">Email </th>
+            <th style="width:20%">Email </th>
             <th style="width:15%">Mobile </th>
-            <th style="width:5%">Gender </th>
-            <th style="width:15%">Job </th>
-            <th colspan="2" style="width:8%">Action </th>
+            <th style="width:12%">Experience </th>
+            <th style="width:12%">Job </th>
+            <th style="width:15%"> Applied</th>
+            <th colspan="2" style="width:5%">Action </th>
         </tr>
         
     </thead>
 
     <tbody>
-        {% for candidate in candidates_data %}
+        {% for candidate in candidates %}
         <tr>
-            <td>{{ candidate.firstname}} {{candidate.lastname}}</td>
-            <td>{{ candidate.email }}  </td>
-            <td> {{ candidate.mobile }} </td>
-            <td> {{ candidate.gender }} </td>
-            <td>{{ candidate.job }}  </td>
-            <td class="bg-dark">
-                <a href="{% url 'candidate' candidate.id %}" class="btn btn-outline btn-sm text-light">
-                    <i class="fas fa-user-alt"></i>
+            <td id="top-border" label="Name">{{ candidate.firstname}} {{candidate.lastname}}</td>
+            <td id="sm-border" label="Email">{{ candidate.email }}  </td>
+            <td id="sm-border" label="Mobile"> {{ candidate.mobile }} </td>
+            <td id="sm-border" label="Experience"> 
+                {%  if candidate.experience == 'Fresher' %}
+                    <p>Fresher</p>
+                {% else %} 
+                    <p>Experience</p>
+                    <p></p>
+                {% endif %}
+
+            </td>
+
+
+            <td id="sm-border" label="Job"> 
+                {% if candidate.job == 'SDE-01' %} 
+                 
+                    <p>
+                        Full Stack
+                    </p>
+                  {% elif candidate.job == 'BAC-01' %}
+                  <p>
+                    Backend
+                   </p>
+                {% else %}
+                <p>
+                    Frontend
+                </p>
+                {% endif %}
+                
+            
+            </td>
+            <td id="sm-border" label="Applied On">  {{ candidate.created_at |date:'M d Y' }} </td>
+            <td class="" >
+                <a href="{% url 'candidate' candidate.id %}" class="btn btn-secondary btn-sm text-light res-btn" title="View">
+                    <i class="fas fa-user-alt" style='font-size:24px;'></i>
                 </a>
 
             </td>
@@ -59,6 +153,57 @@
 
 
    </table>
+
+   <nav >
+    {% if candidates.has_other_pages %}
+    <ul class="pagination">
+        {% if candidates.has_previous %}  
+            <a href="?page=1" class="btn btn-outlink-dark mb-4" style ="border-radius: 1px; border:1px solid #1b1b1b;">first</a>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ candidates.previous_page_number }}">
+                    <i class="fas fa-angle-double-left"></i>
+                </a>
+            </li>
+        {% else %} 
+            <li class="page-item disabled"></li>
+
+        {% endif %}
+
+        {% for i in candidates.paginator.page_range %} 
+
+            {% if candidates.number == i %} 
+                <li class="page-item active">
+                    <span class="page-link">
+                        {{ i }}
+                        <span class="sr-only"></span>
+                    </span>
+                </li>
+            {% else %}  
+            <li class="page-item">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {% endif %} 
+        {% endfor %}
+
+        {% if candidates.has_next %}  
+            
+            <li class="page-item">
+                <a class="page-link" href="?page={{ candidates.next_page_number }}">
+                    <i class="fas fa-angle-double-right"></i>
+                </a>
+            </li>
+            <a href="?page={{ candidates.paginator.num_pages }}" class="btn btn-outlink-dark mb-4" style ="border-radius: 1px; border:1px solid #1b1b1b;">last</a>
+        {% else %} 
+        <li class="page-item disabled">
+            
+        </li>
+        {% endif %}
+
+
+    </ul>
+
+    {% endif %} 
+  </nav>
 
 
 

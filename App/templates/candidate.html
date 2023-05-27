@@ -1,22 +1,179 @@
 
-{% extends 'register.html' %}
+{% extends 'base.html' %}
 
 
 {% block title %}
-    Candidate Details | HRM
+    Candidate | HRM
 {% endblock title %}
 
-{% block nav-heading %}           
-        <i class="fas fa-user-alt"></i> 
-       &nbsp; Candidate Details
-{% endblock nav-heading %}
+{% block navbar-bg %} 
+    {% if candidate.experience != 'Fresher' %}
+        bg-warning text-dark p-3
+    {% else %}
+        bg-dark text-light p-3
+    {% endif %}
 
+{% endblock navbar-bg %}
 
+{% block nav-content %}   
+<a href="" class="navbar-brand flex-grow-1 text-center text-light" style="left: 50%; transform: translateX(-50%); position:relative;">
 
-{% block buttons %} 
-
-<a href="{% url 'backend' %}" class="btn btn-outline-dark btn-sm mt-2 my-app" >
-    Back
+        <i class="fas fa-user-alt text-light"> &nbsp;Candidate Details</i> 
 </a>
+{% endblock nav-content %} 
 
-{% endblock buttons%}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-between border-bottom border-5">
+            <h5 class="mb-3 fs-4 fw-bold">
+                {{ candidate.firstname }} {{ candidate.lastname }}
+            </h5>
+            <h5 class="mb-3 fs-4">
+                 {% if candidate.job == 'SDE-01' %} 
+                 
+                    <p>
+                        <strong>Full Stack</strong>
+                    </p>
+                  {% elif candidate.job == 'BAC-01' %}
+                  <p>
+                    <strong>Backend</strong>
+                   </p>
+                {% else %}
+                <p>
+                    <strong>Frontend</strong>
+                </p>
+                {% endif %}
+            </h5>
+            <a class="text-warning fw-bold fs-4" href="{{ candidate.file.url}}">
+                <span class="btn btn-warning">Download CV </span>
+
+            </a>
+        </div>
+        
+   
+
+   <!--   image -->
+    <div class="float-end mt-4">
+        <img src="{{ candidate.profile_image.url}}" class="img-fluid img-thumbnail" width="180" height="150" alt="image">
+        <div class="text-center mt-2" style="font-size:14px;">
+            {{ candidate.birthdate| timesince}}  old
+        </div>
+        
+    </div>
+
+   
+    
+
+    <h5 class="text-primary mb-4 mt-4 fw-bold">PERSONAL DETAILS </h5>
+    <p><strong>email:</strong> {{ candidate.email}} </p>
+    <p><strong>Mobile:</strong> {{ candidate.mobile}} </p>
+    <p><strong>BirthDate:</strong> {{ candidate.birthdate}} </p>
+    <p><strong>Gender:</strong> {{ candidate.gender}} </p>
+    <p><strong>Location:</strong> {{ candidate.city}} </p>
+    <hr style="width:40%;">
+    
+    <p><strong>Current Position:</strong> {{ candidate.position}} </p>
+    <p><strong>Experience:</strong> <span class="
+        {% if  candidate.experience != 'Fresher' %}
+        text-warning {% else %} text-dark {% endif %} fs-4 fw-bold">{{candidate.experience}}</span> </p>
+    <p><strong>Cloud Experience:</strong> {{ candidate.cloud}} </p>
+    <p><strong>Salary Expectation:</strong> {{ candidate.salary}} </p>
+    <p><strong>About Me:</strong> {{ candidate.message}} </p>
+    <hr style="width:40%;">
+
+    <!--  -->
+    <h5 class="text-primary mb-4 mt-4 fw-bold">TECHNICAL SKILLS </h5>
+    <p><strong>Programming Languages</strong> {{ candidate.languages}} </p>
+    <p><strong>Frameworks</strong> {{ candidate.frameworks}} </p>
+    <p><strong>Databases</strong> {{ candidate.databases}} </p>
+    <p><strong>Dev Ops</strong> {{ candidate.other_skills}} </p>
+
+    <hr style="width:40%;">
+
+    <h5 class="text-primary mb-4 mt-4 fw-bold">EXPERIENCE </h5>
+    <p><strong>Role: </strong> {{ candidate.role}} </p>
+    <p><strong>Company: </strong> {{ candidate.company}} </p>
+    <p><strong>Started: </strong> {{ candidate.started_at}} </p>
+
+    <p><strong>Ended</strong> 
+        {% if candidate.ended_at == now %}
+            still working
+        {% else %}
+        {{ candidate.ended_at}}
+        {% endif %}
+    </p>
+
+    <p><strong>Notice Period: </strong> {{ candidate.notice_period}} days </p>
+    <p><strong>Description: </strong> {{ candidate.about_role}} </p>
+    
+    <p><strong>Remote: </strong> 
+        {% if  candidate.hybrid_office != 'True'  %}
+            Yes
+        {% else %} 
+            No
+        {% endif %}
+    </p>
+
+    <p><strong>Still Working: </strong> 
+        {% if  candidate.still_working == 'True'  %}
+            Yes
+        {% else %} 
+            No
+        {% endif %}
+    </p>
+
+    <hr style="width:40%;">
+
+    <h5 class="text-primary mb-4 mt-4 fw-bold">EDUCATION </h5>
+    <p><strong>Course: </strong> {{ candidate.course}} </p>
+    <p><strong>Institution: </strong> {{ candidate.institution}} </p>
+    <p><strong>Started: </strong> {{ candidate.course_started}} </p>
+    <p><strong>Finished: </strong> {{ candidate.course_finished}} </p>
+    <p><strong>Structure: </strong> {{ candidate.course_details}} </p>
+    <p><strong>Mode: </strong> {{ candidate.course_mode}} </p>
+
+    <hr style="width:40%;">
+
+    <h5 class="text-primary mb-4 mt-4 fw-bold">CONTACT </h5>
+    <p><strong>Project: </strong> {{ candidate.project}} </p>
+    <p><strong>Github: </strong> {{ candidate.github}} </p>
+    <p><strong>Linkedin: </strong> {{ candidate.linkedin}} </p>
+    <p><strong>Website: </strong> {{ candidate.portfolio}} </p>
+
+    <hr style="width:40%;">
+
+
+    <a href="{% url 'backend' %}" class="btn btn-primary p-2 mt-5 ml-5 fw-bold" style="width:150px;">
+        All Candidates
+    </a>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+

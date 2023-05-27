@@ -26,19 +26,17 @@
     
       <header>
         
-        <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="navbar navbar-expand-lg navbar-dark 
+        {% block navbar-bg %} bg-dark  {% endblock navbar-bg %} box-shadow">
           <div class="container d-flex justify-content-between">
+            
+            {% block nav-content %}
             <a href="" class="navbar-brand d-flex align-items-center">
 
-              {% block nav-heading %}
-               
                <i class="fab fa-python"></i> 
-               <strong> &nbsp;HRM</strong> clear-top
-              {% endblock nav-heading %}
-              
-              
-              
+               <strong> &nbsp;HRM</strong> 
             </a>
+            {% endblock nav-content %}
             
           </div>
         </div>

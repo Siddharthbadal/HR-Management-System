@@ -5,6 +5,11 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control  # destroyes session after logout
+from django.core.paginator import Paginator
+from django.db.models import Q 
+from django.db.models.functions import Concat 
+from django.db.models import Value as Val 
+
 
 def home(request):
     return render(request, 'home.html')
@@ -34,8 +39,26 @@ def register(request):
 @login_required(login_url='login')
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def backend(request):
-    candidates = Candidate.objects.all()
-    context = {'candidates_data': candidates}
+    # filter by job and experience
+    if request.method == 'POST':
+        job= request.POST.get('job')
+        experience= request.POST.get('experience')
+        filter = Candidate.objects.filter(Q(job=job) | Q(experience=experience) )
+        context ={
+            'candidates': filter
+        }
+
+        return render(request, 'backend.html', context)
+    elif 'q' in request.GET:
+        q = request.GET['q']
+        candidates_list = Candidate.objects.annotate(name=Concat('firstname',Val(' '),'lastname')).filter(Q(name__icontains=q) | Q(firstname__icontains=q) | Q(lastname__icontains=q) | Q(created_at__icontains=q) | Q(email__icontains=q) | Q(mobile__icontains=q)|Q(gender__icontains=q)).order_by('-created_at')
+
+    else:
+        candidates_list = Candidate.objects.all().order_by('-created_at')
+    paginator = Paginator(candidates_list, 5)   
+    page_number = request.GET.get('page') 
+    all_candidates = paginator.get_page(page_number)
+    context = {'candidates': all_candidates}
     return render(request, 'backend.html', context)
 
 
@@ -43,18 +66,7 @@ def backend(request):
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def candidate(request, id):
     candidate = Candidate.objects.get(pk=id)
-    form = CandidateForm(instance=candidate)
-
-    # read only cadidates fields for candidate.html
-    readonly_fields = ['experience','job','firstname', 'lastname', 'email', 'gender', 'birthdate', 'mobile', 'city', 'education','position','salary','cloud', 'languages', 'frameworks','databases','other_skills','message','profile_image', 'file', 'course', 'institution', 'course_started', 'course_finished', 'course_details', 'course_mode',
-        'company', 'role', 'started_at', 'ended_at', 'notice_period', 'about_role', 'hybrid_office', 'still_working','linkedin', 'github', 'project', 'portfolio']
-
-    for field in readonly_fields:
-        form.fields[field].disabled = True
-        
-        # disable upload fields
-        form.fields['file'].widget.attrs.update({'style':'display:None;'})
-        form.fields['profile_image'].widget.attrs.update({'style':'display:None;'})
-
-    context = {'form': form}
+    context = {
+        'candidate':candidate
+    }
     return render(request, 'candidate.html', context)

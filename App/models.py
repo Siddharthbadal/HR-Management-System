@@ -19,11 +19,16 @@ POSITIONS = (
     ('Backend','Backend'),
     ('Other','Other'),
 )
+# EXPERIENCE_LEVEL=(
+#     ('Fresher', 'Fresher'),
+#     ('0-2 years', '0-2 years'),
+#     ('2-5 years', '2-5 years'),
+#     ('5+ years', '5+ years'),
+# )
 EXPERIENCE_LEVEL=(
     ('Fresher', 'Fresher'),
-    ('0-2 years', '0-2 years'),
-    ('2-5 years', '2-5 years'),
-    ('5+ years', '5+ years'),
+    ('Experience', 'Experience'),
+    
 )
 
 FRAMEWORKS =(
