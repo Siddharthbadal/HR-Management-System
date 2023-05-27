@@ -44,7 +44,7 @@ Project is work in Progress.
 
 
 Candidates Registration forms
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/register-form-1.png?raw=true)
+![img](https://drive.google.com/file/d/1uJQxPN4Oiwn8LvYim-3MKuTgIBXXiWGN/view?usp=share_link)
 
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/register-form-1.png?raw=true)
 
