@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.views.decorators.csrf import csrf_protect
 from .forms import CandidateForm
 from .models import Candidate
 from django.http import HttpResponseRedirect
@@ -16,7 +17,7 @@ def home(request):
 
 
 # registration
-
+@csrf_protect
 def register(request):
     if request.method == 'POST':
         form = CandidateForm(request.POST, request.FILES)        
@@ -37,6 +38,7 @@ def register(request):
 
 
 # backend
+@csrf_protect
 @login_required(login_url='login')
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def backend(request):
@@ -62,7 +64,7 @@ def backend(request):
     context = {'candidates': all_candidates}
     return render(request, 'backend.html', context)
 
-
+@csrf_protect
 @login_required(login_url='login')
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def candidate(request, id):
@@ -76,6 +78,7 @@ def candidate(request, id):
 
 
 # export to pdf 
+@csrf_protect
 @login_required(login_url='login')
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def download_candidate_pdf(request, id):
