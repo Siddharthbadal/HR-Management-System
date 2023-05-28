@@ -75,7 +75,7 @@ class Candidate(models.Model):
     lastname = models.CharField(max_length=60)
     job = models.CharField(max_length=6)
     email = models.EmailField(max_length=100)
-    birthdate = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Date Of Birth')
+    birthdate = models.DateField(auto_now=False, verbose_name='Date Of Birth')
     mobile = models.CharField(max_length=10)
 
     education = models.CharField(max_length=100, choices=EDUCATION, null=True)
