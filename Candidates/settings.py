@@ -174,11 +174,11 @@ JAZZMIN_SETTINGS={
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'https://web-production-e415.up.railway.app',
+    'https://hr-management-system-production.up.railway.app',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-e415.up.railway.app'
+    'https://hr-management-system-production.up.railway.app'
 ]
 
 
