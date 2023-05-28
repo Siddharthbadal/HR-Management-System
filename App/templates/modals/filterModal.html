@@ -1,0 +1,62 @@
+{% extends "modals/baseModal.html" %}
+
+
+
+
+{% block modal-id%} 
+    id="filterModal"
+{% endblock modal-id %}
+
+
+
+$nbsp;$nbsp;
+{% block modal-title %} 
+
+ <i class="fas fa-filter"></i> Advanced Filter
+{% endblock modal-title %}
+
+
+
+
+
+{% block modal-body %} 
+
+<form method="POST" class="mt-5 mb-2">
+    {% csrf_token %}
+<div class="btn-group wd-100" role="group" aaria-label="Basic radio toggle button group">
+
+    <input type="submit" class="btn-check" value="SDE-01" name="job" id="btnradio1" autocomplete="off">
+    <label {% if request.POST.job == 'SDE-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %} for="btnradio1">FullStack</label>
+
+    <input type="submit" class="btn-check" value="BAC-01" name="job" id="btnradio2" autocomplete="off">
+    <label {% if request.POST.job == 'BAC-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio2">Backend</label>
+
+    <input type="submit" class="btn-check" value="FRE-01" name="job" id="btnradio3" autocomplete="off">
+    <label {% if request.POST.job == 'FRE-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio3">Fronted</label>
+
+    <input type="submit" class="btn-check" value="Fresher" name="experience" id="btnradio4" autocomplete="off">
+    <label {% if request.POST.experience == 'Fresher' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio4">Fresher</label>
+
+    <input type="submit" class="btn-check" value="Experience" name="experience" id="btnradio5" autocomplete="off">
+    <label {% if request.POST.experience == 'Experience' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio5">Experience</label>
+
+    
+
+</div>
+</form>
+
+
+{% endblock modal-body %}
+
+
+
+
+
+{% block modal-footer %} 
+          
+
+
+
+
+
+{% endblock modal-footer %}

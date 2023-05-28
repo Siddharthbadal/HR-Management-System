@@ -11,27 +11,40 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
   <div class="collapse navbar-collapse mt-3 mt-md-3 mt-lg-0" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-middle">
-      <li class="nav-item">
+      <li class="nav-item text-light"> Welcome, <span class="text-light fw-bold ">{{ user.get_username | title}}</span>
+
+      </ul>
+
         <a href="#" class='btn btn-light my-btn2' title='control-panel'>
             <i class="fas fa-user-cog f-size2"> </i>
         </a>
-        <a href="{% url 'admin:index' %}" targe="_blank" class='btn btn-warning my-btn2' title='Admin'>
+        <!-- admin button -->
+        <a href="{% url 'admin:index' %}" targe="_blank" class='btn btn-warning ms-1 my-btn2' title='Admin'>
             <i class="fas fa-cog f-size2"> </i>
         </a>
-        <a href="{% url 'logout' %}" class='btn btn-danger my-btn2' title='logout'>
-            <i class="fas fa-power-off f-size2"> </i>
-        </a>
+        <!-- filters modal -->
+        <span class="text-light">&nbsp;</span>
+        <button class="btn my-btn2" style="background-color:#a8b8d0;" title="Filter"
+        data-bs-toggle="modal" data-bs-target="#filterModal"
+        >
+            <i class="fas fa-filter"></i>
+        </button>
+
+
+        
       </li>
       
       
-    </ul>
+   
     
 
   <hr class='text-dark'>
 
 <!--  search -->
+<span class="text-light">&nbsp;</span>
 <form class="d-flex">
     <input class="form-control me-1" name='q' type="search" placeholder="Search" aria-label="Search" value="{{ request.GET.q}}">
     <button class="btn btn-outline-light" title='search' type="submit">
@@ -41,6 +54,12 @@
         <i class='fas fa-sync-alt'></i>
     </a>
   </form>
+
+  <span class="text-light">&nbsp;</span>
+        <a class='btn btn-danger my-btn2' title='logout' data-bs-toggle="modal" data-bs-target="#filterLogout"
+        >
+            <i class="fas fa-power-off f-size2"> </i>
+        </a>
 </div>
 
 
@@ -56,29 +75,7 @@
 {% block content %}
 <div class="container" style="width:90%;">
 
-  <form method="POST" class="mt-5 mb-2">
-        {% csrf_token %}
-    <div class="btn-group wd-100" role="group" aaria-label="Basic radio toggle button group">
-
-        <input type="submit" class="btn-check" value="SDE-01" name="job" id="btnradio1" autocomplete="off">
-        <label {% if request.POST.job == 'SDE-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %} for="btnradio1">FullStack</label>
-
-        <input type="submit" class="btn-check" value="BAC-01" name="job" id="btnradio2" autocomplete="off">
-        <label {% if request.POST.job == 'BAC-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio2">Backend</label>
-
-        <input type="submit" class="btn-check" value="FRE-01" name="job" id="btnradio3" autocomplete="off">
-        <label {% if request.POST.job == 'FRE-01' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio3">Fronted</label>
-
-        <input type="submit" class="btn-check" value="Fresher" name="experience" id="btnradio4" autocomplete="off">
-        <label {% if request.POST.experience == 'Fresher' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio4">Fresher</label>
-
-        <input type="submit" class="btn-check" value="Experience" name="experience" id="btnradio5" autocomplete="off">
-        <label {% if request.POST.experience == 'Experience' %}  class="btn btn-secondary m-1" {% else %} class="btn btn-outline-secondary m-1" {% endif %}for="btnradio5">Experience</label>
-
-        
-
-    </div>
-  </form>
+  <!-- filter modal -->
 
 
 
@@ -90,19 +87,21 @@
    <table class='table table-bordered text-center'>
     <thead class='table-secondary'>
         <tr>
-            <th style="width:22%">Name </th>
+            <th style="width:20%">Name </th>
             <th style="width:20%">Email </th>
-            <th style="width:15%">Mobile </th>
+            <th style="width:13%">Mobile </th>
             <th style="width:12%">Experience </th>
             <th style="width:12%">Job </th>
-            <th style="width:15%"> Applied</th>
-            <th colspan="2" style="width:5%">Action </th>
+            <th style="width:12%"> Applied</th>
+            <th colspan="2" style="width:15%">Action </th>
         </tr>
         
     </thead>
 
     <tbody>
         {% for candidate in candidates %}
+
+        {% include 'modals/noteModal.html' %}
         <tr>
             <td id="top-border" label="Name">{{ candidate.firstname}} {{candidate.lastname}}</td>
             <td id="sm-border" label="Email">{{ candidate.email }}  </td>
@@ -135,14 +134,28 @@
                 {% endif %}
                 
             
-            </td>
-            <td id="sm-border" label="Applied On">  {{ candidate.created_at |date:'M d Y' }} </td>
-            <td class="" >
-                <a href="{% url 'candidate' candidate.id %}" class="btn btn-secondary btn-sm text-light res-btn" title="View">
+            </td >
+            <td id="sm-border" label="Applied On">  
+                {{ candidate.created_at |date:'M d Y' }}</td>
+            
+            <td class='btn-side' >
+                <a href="{% url 'candidate' candidate.id %}" class="btn btn-secondary  text-light " title="View">
                     <i class="fas fa-user-alt" style='font-size:24px;'></i>
-                </a>
+                </a> 
 
+                {% if candidate.app_status != 'Approved' %}
+                
+                <button class="btn btn-outline-info  text-dark  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#noteModal{{ candidate.pk }}">
+                    <i class="fas fa-question" style='font-size:24px;'></i>
+                </button>
+                {% else %}
+
+                <button  class="btn btn-warning  text-dark  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#noteModal{{ candidate.pk }}">
+                    <i class="fas fa-question" style='font-size:24px;'></i>
+                </button>
+                {% endif %}
             </td>
+
             {% empty %}
             <td colspan='6' class='text-denger'>
                 <strong>No data avilable!</strong>

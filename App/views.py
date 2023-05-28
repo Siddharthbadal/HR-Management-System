@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .forms import CandidateForm
 from .models import Candidate
 from django.http import HttpResponseRedirect
@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q 
 from django.db.models.functions import Concat 
 from django.db.models import Value as Val 
+import pdfkit 
 
 
 def home(request):
@@ -70,3 +71,30 @@ def candidate(request, id):
         'candidate':candidate
     }
     return render(request, 'candidate.html', context)
+
+
+
+
+# export to pdf 
+@login_required(login_url='login')
+@cache_control(no_cache=True, must_revalidate=True,no_store=True)
+def download_candidate_pdf(request, id):
+    c = Candidate.objects.get(pk=id)
+    cookies = request.COOKIES
+    options = {
+        'page-size': 'Letter',
+        'encoding': 'UTF-8',
+        "enable-local-file-access": "",
+        'cookie': [
+            ('csrftoken', cookies['csrftoken']),
+            ('sessionid', cookies['sessionid'])
+        ]
+    }
+    # pass live url 
+    
+    config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
+    pdf = pdfkit.from_url('http://127.0.0.1:8000/'+str(c.id), False, options=options, configuration=config)
+    res = HttpResponse(pdf, content_type="application/pdf")
+    res['content-disposition'] = 'attachment; filename=candidate.pdf'
+    return res 
+

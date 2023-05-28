@@ -1,0 +1,38 @@
+{% extends "modals/baseModal.html" %}
+
+<!-- Modal ID -->
+{% block modal-id%} 
+    id='filterLogout'
+{% endblock modal-id %}
+
+
+
+
+{% block modal-title %} 
+    <i class='fas fa-power-off'></i>&nbsp;&nbsp;
+    LogOut
+{% endblock modal-title %}
+
+
+
+
+
+{% block modal-body %} 
+
+<br>
+<div class='text-danger text-center'>
+    <i class='fas-fa-power-off fa-3x'></i>
+</div>
+<div class='text-center mb-3 mt-3'>Are you sure you want to logout?</div>
+
+
+{% endblock modal-body %}
+
+
+
+
+{% block modal-footer %}       
+
+<a href="{% url 'logout' %}" class='btn btn-outline-danger btn-sm'>LogOut</a>
+
+{% endblock modal-footer %}

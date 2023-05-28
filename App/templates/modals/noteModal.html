@@ -1,0 +1,61 @@
+{% extends "modals/baseModal.html" %}
+
+
+
+
+{% block modal-id %} 
+    id ="noteModal{{ candidate.pk }}"
+{% endblock modal-id %}
+
+
+
+
+{% block modal-title %} 
+    <i class='fas fa-clipboard'></i>&nbsp; Admin Note
+{% endblock modal-title %}
+
+
+
+
+
+{% block modal-body %} 
+
+<div class='d-flex justify-content-start'>
+    <div>
+            {% if candidate.app_status == 'Approved' %}
+                <h6 class='btn btn-success btn-sm'>Approved</h6>
+            {% elif candidate.app_status == 'Pending' %}
+                <h6 class='btn btn-warning btn-sm'>Pending</h6>
+            {% elif candidate.app_status == 'Hold' %}
+                <h6 class='btn btn-info btn-sm'>Hold</h6>
+            {% else %} 
+                <h6 class="btn btn-danger btn-sm">Rejected</h6>
+            {% endif %}
+    </div>
+    <div class="">
+        <h5> &nbsp;&nbsp;{{ candidate.firstname }} {{ candidate.lastname }}</h5>
+    </div>
+    
+
+    <!--  company note -->
+    
+</div>
+<div class="card p-3 mt-3 " style="font-size:14px">
+    <p><strong>NOTE:</strong></p>
+    <p>{{ candidate.company_note }}</p>
+</div>
+
+{% endblock modal-body %}
+
+
+
+
+
+{% block modal-footer %} 
+          
+
+
+
+
+
+{% endblock modal-footer %}

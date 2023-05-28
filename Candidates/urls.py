@@ -15,5 +15,6 @@ urlpatterns = [
     # backend 
     path('candidates', views.backend, name='backend'),
     path('candidates/<int:id>/', views.candidate, name='candidate'),
+    path('<int:id>/download_candidate_pdf/', views.download_candidate_pdf, name='download_candidate_pdf')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
