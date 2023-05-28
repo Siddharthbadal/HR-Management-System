@@ -31,7 +31,7 @@ Details could be seen on the details page in the read only format by admin allow
 Admin or user allowed by admin can access all the details of the registered user.
 Admin can update the status, and leave comments on the applications from admin panel.
 
-Form handling wit user validations on fronted (for user inputs) and backend (for admin panel), 
+Form handling with the user validations on fronted (for user inputs) and backend (for admin panel), 
 customized admin panel where admin can update the status and leave notes.
 forms widegts on multiple feilds to manage values, labels, and input
 File upload
