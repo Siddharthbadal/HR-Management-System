@@ -10,6 +10,9 @@ gunicorn==20.1.0
 pdfkit==1.0.0
 phonenumberslite==8.13.11
 Pillow==9.5.0
+psycopg2==2.9.6
+python-decouple==3.8
 sqlparse==0.4.4
 tzdata==2023.3
+whitenoise==6.4.0
 wkhtmltopdf==0.2

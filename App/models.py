@@ -71,27 +71,27 @@ COURSE_MODE=(
     
 class Candidate(models.Model):
     # personal details
-    firstname = models.CharField(max_length=25)
-    lastname = models.CharField(max_length=25)
+    firstname = models.CharField(max_length=60)
+    lastname = models.CharField(max_length=60)
     job = models.CharField(max_length=6)
-    email = models.EmailField(max_length=40)
+    email = models.EmailField(max_length=100)
     birthdate = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Date Of Birth')
     mobile = models.CharField(max_length=10)
 
-    education = models.CharField(max_length=20, choices=EDUCATION, null=True)
-    city=models.CharField(max_length=30)
-    salary = models.CharField(max_length=20, null=True)
+    education = models.CharField(max_length=100, choices=EDUCATION, null=True)
+    city=models.CharField(max_length=100)
+    salary = models.CharField(max_length=100, null=True)
     gender = models.CharField(max_length=6)
     cloud = models.BooleanField(null=True, default=True)
-    position= models.CharField(max_length=20, choices=POSITIONS, null=True)
-    experience = models.CharField(max_length=20, choices=EXPERIENCE_LEVEL, null=True)
+    position= models.CharField(max_length=200, choices=POSITIONS, null=True)
+    experience = models.CharField(max_length=200, choices=EXPERIENCE_LEVEL, null=True)
 
-    profile_image = models.ImageField(upload_to='ProfileImages', verbose_name='ProfileImages', blank=True, default='profile.png')
+    profile_image = models.ImageField(upload_to='ProfileImages', verbose_name='ProfileImages', blank=True, default='ProfileImages/profile.png')
     message = models.TextField()
-    file = models.FileField(upload_to="Resumes", verbose_name="Resume")
+    file = models.FileField(upload_to="Resumes", verbose_name="Resume", max_length=20000)
 
     created_at=models.DateTimeField(auto_now_add=True)
-    app_status= models.CharField(max_length=50, null=True, choices=STATUS, default='Pending')
+    app_status= models.CharField(max_length=200, null=True, choices=STATUS, default='Pending')
     company_note = models.TextField(blank=True)
     # admin_verifier = models.CharField(max_length=100)
 
@@ -102,8 +102,8 @@ class Candidate(models.Model):
     other_skills = MultiSelectField(choices=OTHER, default='', max_length=100)
 
     # education
-    course = models.CharField(max_length=50)
-    institution = models.CharField(max_length=50)
+    course = models.CharField(max_length=100)
+    institution = models.CharField(max_length=100)
     course_started = models.DateField(auto_now=False, auto_now_add=False,verbose_name='Start Date')
     course_finished = models.DateField(auto_now=False, auto_now_add=False, verbose_name='End date')
     course_details= models.TextField()
@@ -112,8 +112,8 @@ class Candidate(models.Model):
 
 
     # experience - work
-    company = models.CharField(max_length=50, null=True, blank=True)
-    role = models.CharField(max_length=50, null=True, blank=True)
+    company = models.CharField(max_length=100, null=True, blank=True)
+    role = models.CharField(max_length=100, null=True, blank=True)
     started_at =models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     ended_at = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     notice_period = models.CharField(max_length=2, null=True, blank=True)
