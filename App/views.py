@@ -11,12 +11,12 @@ from django.db.models.functions import Concat
 from django.db.models import Value as Val 
 import pdfkit 
 
-
 def home(request):
     return render(request, 'home.html')
 
 
 # registration
+
 def register(request):
     if request.method == 'POST':
         form = CandidateForm(request.POST, request.FILES)        

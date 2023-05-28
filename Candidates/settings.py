@@ -158,4 +158,10 @@ JAZZMIN_SETTINGS={
     "user_avatar": "img/avatar.png"
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-e415.up.railway.app']
+CORS_ALLOWED_ORIGINS = [
+    'https://web-production-e415.up.railway.app',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-e415.up.railway.app'
+]
