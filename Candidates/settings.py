@@ -157,3 +157,5 @@ JAZZMIN_SETTINGS={
     "copyright": "Siddharth",
     "user_avatar": "img/avatar.png"
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-e415.up.railway.app/']
