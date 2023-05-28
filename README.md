@@ -4,37 +4,28 @@ A Human Resource Management job portal to manage applications and candidates det
 
 Few of the features:
 
-    - Form handling 
+    - User registration with multiple fileds like checkbox, dropdown, date picker, update documents.
+
+    - Form validation on each fileds. Eg. date validation, email validation, strings and integer validations etc
 
     - User Validations on fronted (for user inputs) and backend (for admin panel) 
 
-    - custom validations on individual form fields 
+     - forms widegts on multiple feilds to manage values, labels, and input
 
-    - customized admin panel
+    - Custom admin panel for admin and account with admin permissions.
 
-    - control panel to manage form fields
+    - Customized admin panel with read only fields and filters for admin and support staff.
 
-    - forms widegts on multiple feilds to manage values, labels, and input
+    - Note and status updation functionality for admin.
 
-    - File upload
-
-    - read only admin with status update
-
-    - Read only feilds for external users
-    
-    - Admin login
+    - Email settings.
 
 
-### Process
-User can access the registrtaion form and fill all the details. 
-Details could be seen on the details page in the read only format by admin allowed users.
-Admin or user allowed by admin can access all the details of the registered user.
-Admin can update the status, and leave comments on the applications from admin panel.
 
-Form handling with the user validations on fronted (for user inputs) and backend (for admin panel), 
-customized admin panel where admin can update the status and leave notes.
-forms widegts on multiple feilds to manage values, labels, and input
-File upload
+### Tech Stack
+
+    Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
+
 
 Project is work in Progress.
 
@@ -42,8 +33,10 @@ Project is work in Progress.
 Live Demo: https://hr-management-system-production.up.railway.app/
 
 
+
 If images are not visible here, Please visit this link:
 https://drive.google.com/drive/folders/1er7UAC-zkNrj1bCFb7um7UH8WDR0ckUA?usp=share_link
+
 
 
 Candidates Registration forms
@@ -70,6 +63,3 @@ main page
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel1.png?raw=true)
 
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel2.png?raw=true)
-
-
-
