@@ -1,15 +1,13 @@
 from django.contrib import admin
-from .models import Candidate
-from .forms import CandidateForm
+from .models import Candidate, Email
+from .forms import CandidateForm, EmailForm
 from django.utils.html import format_html
 
 # Register your models here.
 
 class candidateAdmin(admin.ModelAdmin):
     radio_fields = {'education': admin.HORIZONTAL}
-    form = CandidateForm
-  
-    
+    form = CandidateForm   
     
 
     list_filter=['app_status']
@@ -35,28 +33,6 @@ class candidateAdmin(admin.ModelAdmin):
         ('CONNECT', {'fields': ['linkedin', 'github', 'project', 'portfolio']})
 
     ]
-
-
-    
-
-    
-   
-
-    
-
-   
-
-
-    
-   
-
-
-
-   
-
-
-
-
 
     # function to change icon for list display
     def _(self, obj):
@@ -86,4 +62,16 @@ class candidateAdmin(admin.ModelAdmin):
     status.allow_tags=True 
            
 
+
+class EmailAdmin(admin.ModelAdmin):
+    read_only = ( 'name', 'email', 'subject', 'message')
+    list_display = ['name', 'email', 'subject', 'status']
+    search_fields = ['name', 'email', 'subject']
+    list_filter = ['status']
+    list_per_page = 10
+
+
+
+
 admin.site.register(Candidate, candidateAdmin)
+admin.site.register(Email, EmailAdmin)

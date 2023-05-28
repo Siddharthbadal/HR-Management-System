@@ -1,5 +1,5 @@
 from django import forms  
-from .models import Candidate
+from .models import Candidate, Email
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from datetime import date 
@@ -415,6 +415,15 @@ class CandidateForm(forms.ModelForm):
         if ended_at > datetime.date.today():
             raise forms.ValidationError("Invalid date")
         return ended_at
+    
+
+class EmailForm(forms.Form):
+    email = forms.EmailField()
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        fields = "__all__"
             
 
 

@@ -1,7 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
-from .forms import CandidateForm
-from .models import Candidate
+from .forms import CandidateForm, EmailForm
+from .models import Candidate, Email
 from django.http import HttpResponseRedirect
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
@@ -10,7 +10,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q 
 from django.db.models.functions import Concat 
 from django.db.models import Value as Val 
-import pdfkit 
+from django.core.mail import EmailMessage
+
 
 def home(request):
     return render(request, 'home.html')
@@ -47,8 +48,16 @@ def backend(request):
         job= request.POST.get('job')
         experience= request.POST.get('experience')
         filter = Candidate.objects.filter(Q(job=job) | Q(experience=experience) )
+        total = Candidate.objects.all().count()
+        frontend = Candidate.objects.filter(job="FRE-01").count()
+        backend = Candidate.objects.filter(job="BAC-01").count()
+        fullstack = Candidate.objects.filter(job="SDE-01").count()
         context ={
-            'candidates': filter
+            'candidates': filter,
+            'total': total,
+            'frontend': frontend,
+            'backend': backend,
+            'fullstack': fullstack 
         }
 
         return render(request, 'backend.html', context)
@@ -61,8 +70,23 @@ def backend(request):
     paginator = Paginator(candidates_list, 5)   
     page_number = request.GET.get('page') 
     all_candidates = paginator.get_page(page_number)
-    context = {'candidates': all_candidates}
+    
+    total = Candidate.objects.all().count()
+    frontend = Candidate.objects.filter(job="FRE-01").count()
+    backend = Candidate.objects.filter(job="BAC-01").count()
+    fullstack = Candidate.objects.filter(job="SDE-01").count()
+
+
+    context = {
+                'candidates': all_candidates,
+                'total': total,
+                'frontend': frontend,
+                'backend': backend,
+                'fullstack': fullstack            
+            }
     return render(request, 'backend.html', context)
+
+
 
 @csrf_protect
 @login_required(login_url='login')
@@ -76,28 +100,69 @@ def candidate(request, id):
 
 
 
-
-# export to pdf 
 @csrf_protect
 @login_required(login_url='login')
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
-def download_candidate_pdf(request, id):
-    c = Candidate.objects.get(pk=id)
-    cookies = request.COOKIES
-    options = {
-        'page-size': 'Letter',
-        'encoding': 'UTF-8',
-        "enable-local-file-access": "",
-        'cookie': [
-            ('csrftoken', cookies['csrftoken']),
-            ('sessionid', cookies['sessionid'])
-        ]
-    }
-    # pass live url 
+def delete_candidate(request, id):
+    candidate = Candidate.objects.get(pk=id)
+    candidate.delete()
+    messages.success(request, "Candidate deleted successfully!")
+    return HttpResponseRedirect('/candidates')
+
+
+
+@csrf_protect
+def email(request):
+    if request.method == 'POST':
+        to_db= Email(
+            status = request.POST.get('status'),
+            name = request.POST.get('name'),
+            email = request.POST.get('email'),
+            subject = request.POST.get('subject'),
+            message = request.POST.get('message'),
+        )
+        print(Email)
+        to_db.save()
+
+        form = EmailForm(request.POST)
+        company = "HRM"
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            
+            mail = EmailMessage(subject, message, company, [email])
+            mail.send()
+            messages.success(request, "email sent successfully")
+            return HttpResponseRedirect("/candidates")
+        else:
+            form = EmailForm()
+            return render(request, {'form': form})
+
+
+
+
+
+# export to pdf 
+# @login_required(login_url='login')
+# @cache_control(no_cache=True, must_revalidate=True,no_store=True)
+# def download_candidate_pdf(request, id):
+#     c = Candidate.objects.get(pk=id)
+#     cookies = request.COOKIES
+#     options = {
+#         'page-size': 'Letter',
+#         'encoding': 'UTF-8',
+#         "enable-local-file-access": "",
+#         'cookie': [
+#             ('csrftoken', cookies['csrftoken']),
+#             ('sessionid', cookies['sessionid'])
+#         ]
+#     }
+#     # pass live url 
     
-    config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
-    pdf = pdfkit.from_url('http://127.0.0.1:8000/'+str(c.id), False, options=options, configuration=config)
-    res = HttpResponse(pdf, content_type="application/pdf")
-    res['content-disposition'] = 'attachment; filename=candidate.pdf'
-    return res 
+#     config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
+#     pdf = pdfkit.from_url('http://127.0.0.1:8000/candidate/'+str(c.id), False, options=options, configuration=config)
+#     res = HttpResponse(pdf, content_type="application/pdf")
+#     res['content-disposition'] = 'attachment; filename=candidate.pdf'
+#     return res 
 

@@ -13,8 +13,10 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('login/', include('django.contrib.auth.urls')),
     # backend 
-    path('candidates', views.backend, name='backend'),
+    path('candidates/', views.backend, name='backend'),
     path('candidates/<int:id>/', views.candidate, name='candidate'),
-    path('<int:id>/download_candidate_pdf/', views.download_candidate_pdf, name='download_candidate_pdf')
+
+    path('delete_candidate/<int:id>/', views.delete_candidate, name='delete_candidate'),
+    path('email', views.email, name='email'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

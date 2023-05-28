@@ -1,0 +1,49 @@
+{% extends "modals/baseModal.html" %}
+
+<!-- Modal ID -->
+{% block modal-id%} 
+    id='emailmodal{{candidate.pk}}'
+{% endblock modal-id %}
+
+
+
+
+{% block modal-title %} 
+    <i class='fas fa-envelope'></i>&nbsp;&nbsp;
+    Email To Candidate
+{% endblock modal-title %}
+
+
+
+
+
+{% block modal-body %} 
+
+<form action="/email" method="POST" class="was-validated">
+    {% csrf_token %}
+    <div class="modal-body">
+    <strong>To:
+        <span class="text-primary">
+            {{ candidate.firstname }} {{ candidate.lastname}}
+            <hr>
+        </span>
+    </strong>
+    <input type="hidden" name="name" value="{{ candidate.firstname}} {{candidate.lastname}}">
+    <input type="hidden" name="email" value="{{ candidate.email}}">
+    <input type="hidden" name="status" value="{{ candidate.app_status}} ">
+
+    <input type="text" name="subject" class="form-control mb-2" placeholder="'subject" required>
+    <textarea class='form-control' name="message" id="" cols="6" rows="10" placeholder="message" required></textarea>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary w-100">
+        <i class=" fas fa-paper-plane"></i>&nbsp; Submit
+    </button>
+</div>
+</form>
+
+{% endblock modal-body %}
+
+
+
+

@@ -1,10 +1,44 @@
 {% extends 'candidate.html' %}
 
-{% block nav-content %}   
-<div href="" class="text-center text-light" style="font-size:16px;">
 
-        <i class="fas fa-user-alt text-light"> 
-            &nbsp; {{ candidate.firstname }} {{ candidate.lastname }}
-        </i> 
+
+
+{% block nav-content %}   
+<div href="" class="text-center text-light" style="font-size:18px;">
+
+<i class="fas fa-user-alt text-light"> 
+    &nbsp; {{ candidate.firstname }} {{ candidate.lastname }}
+</i> 
+
 </div>
 {% endblock nav-content %}
+
+{% block mt %}
+
+{% endblock mt %}
+
+{% block dt-user %}
+    <div class="mb-4 bg-light text-center">
+        <strong>Generated at: </strong> {% now "m/d/Y"}
+        <strong>By:</strong> {{ user.get_username }}
+    </div>    
+
+{% endblock dt-user %}
+
+
+
+{% block tag-footer %} 
+<footer class="mt-auto bg-dark text-center text-lg-start " id="footer" style="color: #fff; margin-top:150px;"> 
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        &copy; {% now "Y" %} Copyright:
+        <a class="text-light" href="https://www.twitter.com/siddbadal" style="text-decoration: none;" target="_blank">
+            <span style="color: #89cff0;">HRM Team- {{ user.get_username }}
+        </a>
+    </div>
+  </footer> 
+
+{% endblock tag-footer %}
+
+{% block btn-download %} {% endblock btn-download  %}
+{% block tag-footer %} {% endblock %}
+{% block tag-footer %} {% endblock %}

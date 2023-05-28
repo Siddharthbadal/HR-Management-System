@@ -17,14 +17,17 @@
       <li class="nav-item text-light"> Welcome, <span class="text-light fw-bold ">{{ user.get_username | title}}</span>
 
       </ul>
-
-        <a href="#" class='btn btn-light my-btn2' title='control-panel'>
+        {% if request.user.is_superuser %}
+        <a href="{% url "admin:App_candidate_changelist" %}" class='btn btn-light my-btn2' title='Candidates Admin' target="_blank">
             <i class="fas fa-user-cog f-size2"> </i>
         </a>
+        
         <!-- admin button -->
-        <a href="{% url 'admin:index' %}" targe="_blank" class='btn btn-warning ms-1 my-btn2' title='Admin'>
-            <i class="fas fa-cog f-size2"> </i>
+        <a href="{% url "admin:App_email_changelist" %}" target="_blank" class='btn btn-warning ms-1 my-btn2' title='Email Admin'>
+            <i class="fas fa-envelope f-size2"> </i>
         </a>
+        {% else %}
+        {% endif %}
         <!-- filters modal -->
         <span class="text-light">&nbsp;</span>
         <button class="btn my-btn2" style="background-color:#a8b8d0;" title="Filter"
@@ -74,10 +77,13 @@
 
 {% block content %}
 <div class="container" style="width:90%;">
+    {% include 'partials/successMessages.html' %}
 
   <!-- filter modal -->
 
-
+    <div class="mt-4 mb-3">
+        {% include 'dashboard/dashboard.html' %}
+    </div>
 
 
 
@@ -87,13 +93,14 @@
    <table class='table table-bordered text-center'>
     <thead class='table-secondary'>
         <tr>
-            <th style="width:20%">Name </th>
-            <th style="width:20%">Email </th>
-            <th style="width:13%">Mobile </th>
-            <th style="width:12%">Experience </th>
+            <th style="width:15%">Name </th>
+            <th style="width:17%">Email </th>
+            <th style="width:10%">Mobile </th>
+            <th style="width:10%">Experience </th>
             <th style="width:12%">Job </th>
             <th style="width:12%"> Applied</th>
-            <th colspan="2" style="width:15%">Action </th>
+            <th colspan="2" style="width:25%">
+                &nbsp;Actions </th>
         </tr>
         
     </thead>
@@ -102,6 +109,8 @@
         {% for candidate in candidates %}
 
         {% include 'modals/noteModal.html' %}
+        {% include 'modals/deleteModal.html' %}
+        {% include 'modals/emailModal.html' %}
         <tr>
             <td id="top-border" label="Name">{{ candidate.firstname}} {{candidate.lastname}}</td>
             <td id="sm-border" label="Email">{{ candidate.email }}  </td>
@@ -112,7 +121,7 @@
                 {% else %} 
                     <p>Experience</p>
                     <p></p>
-                {% endif %}
+                {% endif %} 
 
             </td>
 
@@ -140,20 +149,37 @@
             
             <td class='btn-side' >
                 <a href="{% url 'candidate' candidate.id %}" class="btn btn-secondary  text-light " title="View">
-                    <i class="fas fa-user-alt" style='font-size:24px;'></i>
+                    <i class="fas fa-user-alt" style='font-size:20px;'></i>
                 </a> 
 
-                {% if candidate.app_status != 'Approved' %}
+
+                {% if request.user.is_superuser %}
+                <a href="" class="btn btn-danger text-dark btn-sm my-btn2 res-btn " title="Delete" data-bs-toggle="modal" data-bs-target="#deleteModal{{ candidate.pk }}">
+                    <i class="fas fa-trash-alt" style='font-size:20px;'></i>
+                </a>
                 
-                <button class="btn btn-outline-info  text-dark  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#noteModal{{ candidate.pk }}">
-                    <i class="fas fa-question" style='font-size:24px;'></i>
-                </button>
                 {% else %}
 
-                <button  class="btn btn-warning  text-dark  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#noteModal{{ candidate.pk }}">
-                    <i class="fas fa-question" style='font-size:24px;'></i>
-                </button>
-                {% endif %}
+
+                    {% if candidate.app_status != 'Approved' %}
+                    
+                    <button class="btn btn-outline-info  text-dark  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#noteModal{{ candidate.pk }}">
+                        <i class="fas fa-question" style='font-size:20px;'></i>
+                    </button>
+                    <button  class="btn btn-primary  text-light  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#emailmodal{{candidate.pk}}">
+                        <i class="fas fa-envelope" style='font-size:20px;'></i>
+                    </button>
+                    {% else %}
+
+                    <button  class="btn btn-warning  text-dark  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#noteModal{{ candidate.pk }}">
+                        <i class="fas fa-question" style='font-size:20px;'></i>
+                    </button>
+
+                    <button  class="btn btn-primary  text-light  btn-sm ms-1 my-btn2 res-btn" title="Admin Note" data-bs-toggle="modal" data-bs-target="#emailmodal{{candidate.pk}}">
+                        <i class="fas fa-envelope" style='font-size:20px;'></i>
+                    </button>
+                     {% endif %}
+                    {% endif %}
             </td>
 
             {% empty %}

@@ -157,3 +157,13 @@ class Candidate(models.Model):
 
 
     
+class Email(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    status = models.CharField(max_length=255, null=True, blank=True)
+
+    subject = models.CharField(max_length=255)
+    message = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return self.name 

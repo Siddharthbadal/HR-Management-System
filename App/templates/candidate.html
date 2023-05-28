@@ -45,7 +45,7 @@
                 </p>
                 {% endif %}
             </h5>
-            <a class="text-warning fw-bold fs-4" href="{{ candidate.file.url}}">
+            <a class="text-warning fw-bold fs-4" target="_blank" href="{{ candidate.file.url}}">
                 <span class="btn btn-warning">Download CV </span>
 
             </a>
@@ -147,10 +147,12 @@
     <a href="{% url 'backend' %}" class="btn btn-primary p-2 mt-5 ml-5 fw-bold" style="width:150px;">
         All Candidates
     </a>
-
-    {% comment %} <a href="{% url 'download_candidate_pdf' candidate.id %}" class="btn btn-info p-2 mt-5 ml-5 fw-bold" style="width:150px;">
-        Download PDF
-    </a> {% endcomment %}
+{% if request.user.is_superuser %}
+ <a href="{% url 'admin:App_candidate_change' candidate.id %}" class="btn btn-outline-dark p-2 mt-5 ml-5 fw-bold" target="_blank" style="width:150px;">
+        Note
+    </a> 
+{% else %}
+{% endif %}
   
 </div>
 

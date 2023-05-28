@@ -1,0 +1,41 @@
+{% extends "modals/baseModal.html" %}
+
+<!-- Modal ID -->
+{% block modal-id %} 
+    id='deleteModal{{ candidate.pk }}'
+{% endblock modal-id %}
+
+
+
+
+{% block modal-title %} 
+    <i class='fas fa-trash-alt'></i>&nbsp;&nbsp;
+    Delete Candidate
+{% endblock modal-title %}
+
+
+
+
+
+{% block modal-body %} 
+
+<br>
+<div class='text-danger text-center'>
+    <i class='fas fa-times-circle fa-3x mb-3 mt-2'></i>
+</div>
+<div class='text-center mb-3 mt-3'>
+    This can not be undone. Are you sure?
+
+</div>
+
+
+{% endblock modal-body %}
+
+
+
+
+{% block modal-footer %}       
+
+<a href="{% url 'delete_candidate' candidate.id %}" class='btn btn-outline-danger btn-sm'>Delete</a>
+
+{% endblock modal-footer %}
