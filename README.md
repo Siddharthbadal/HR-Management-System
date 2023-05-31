@@ -24,58 +24,19 @@ Few of the features:
 
 
 
-<<<<<<< HEAD
 ### Tech Stack
 
     Django | Bootstrap | Railway app for database and deployment | PostgreSQL  |  AWS S3
-=======
-<<<<<<< HEAD
 
-
-
-=======
 ### Tech Stack
 
     Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
 
-
-Project is work in Progress.
-
-
-Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/  [user-user1234]
->>>>>>> d76bfb37da57e0423ceb72c0c731ee43956ab98a
 
 
 
 Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/ 
 access with : user/user1234
 
-
-Candidates Registration forms
-![img](https://drive.google.com/file/d/1uJQxPN4Oiwn8LvYim-3MKuTgIBXXiWGN/view?usp=share_link)
-
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/register-form-1.png?raw=true)
-
-
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/candidates-list.png?raw=true)
-
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/candidates-details.png?raw=true)
-
-Candidates form
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form1.png?raw=true)
-
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/user-form2.png?raw=true)
-
-forms validations
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/form-validation.png?raw=true)
-
-
-### Admin panel
-main page
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel1.png?raw=true)
-
-![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel2.png?raw=true)
-
-
-If images are not visible here, Please visit this link:
+View images here:
 https://drive.google.com/drive/folders/1er7UAC-zkNrj1bCFb7um7UH8WDR0ckUA?usp=share_link
