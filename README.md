@@ -24,9 +24,26 @@ Few of the features:
 
 
 
+<<<<<<< HEAD
 ### Tech Stack
 
     Django | Bootstrap | Railway app for database and deployment | PostgreSQL  |  AWS S3
+=======
+<<<<<<< HEAD
+
+
+
+=======
+### Tech Stack
+
+    Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
+
+
+Project is work in Progress.
+
+
+Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/  [user-user1234]
+>>>>>>> d76bfb37da57e0423ceb72c0c731ee43956ab98a
 
 
 
