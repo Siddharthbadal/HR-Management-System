@@ -22,9 +22,12 @@ Few of the features:
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 743b89e78fba9dae96cc966d1f82ba4885980249
 ### Tech Stack
 
     Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
@@ -34,6 +37,7 @@ Project is work in Progress.
 
 
 Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/
+
 
 
 
@@ -66,6 +70,3 @@ main page
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel1.png?raw=true)
 
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel2.png?raw=true)
-
-
-
