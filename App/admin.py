@@ -17,7 +17,7 @@ class candidateAdmin(admin.ModelAdmin):
     list_per_page = 20
 
     # admin read only fields 
-    readonly_fields = ['experience','job','firstname', 'lastname', 'email', 'gender', 'birthdate', 'mobile', 'city', 'education','position','salary','cloud', 'languages', 'frameworks','databases','other_skills','message','profile_image', 'file', 'course', 'institution', 'course_started', 'course_finished', 'course_details', 'course_mode',
+    readonly_fields = ['experience','job','firstname', 'lastname', 'email', 'gender', 'birthdate', 'mobile', 'city', 'education','position','salary','cloud', 'languages', 'frameworks','databases','other_skills','message', 'course', 'institution', 'course_started', 'course_finished', 'course_details', 'course_mode',
     'company', 'role', 'started_at', 'ended_at', 'notice_period', 'about_role', 'hybrid_office', 'still_working','created_at', 'linkedin', 'github', 'project', 'portfolio']
     # status is not the filed name but function
     exclude = ['status']

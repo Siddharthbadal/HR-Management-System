@@ -4,7 +4,7 @@ A Human Resource Management job portal to manage applications and candidates det
 
 Few of the features:
 
-    - User registration with multiple fileds like checkbox, dropdown, date picker, update documents.
+    - User registration with multiple fileds; checkboxs, dropdowns, date picker, update documents.
 
     - Form validation on each fileds. Eg. date validation, email validation, strings and integer validations etc
 
@@ -18,32 +18,20 @@ Few of the features:
 
     - Note and status updation functionality for admin.
 
-    - Email settings.
+    - Send email to candidates.
+
+    - One to one messages for each candidates between admin and staff.
 
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 743b89e78fba9dae96cc966d1f82ba4885980249
 ### Tech Stack
 
-    Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
-
-
-Project is work in Progress.
-
-
-Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/
+    Django | Bootstrap | Railway app for database and deployment | PostgreSQL  |  AWS S3
 
 
 
-
-If images are not visible here, Please visit this link:
-https://drive.google.com/drive/folders/1er7UAC-zkNrj1bCFb7um7UH8WDR0ckUA?usp=share_link
-
+Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/ 
+access with : user/user1234
 
 
 Candidates Registration forms
@@ -70,3 +58,7 @@ main page
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel1.png?raw=true)
 
 ![img](https://github.com/Siddharthbadal/HR-Management-System/blob/main/screenshots/admin-panel2.png?raw=true)
+
+
+If images are not visible here, Please visit this link:
+https://drive.google.com/drive/folders/1er7UAC-zkNrj1bCFb7um7UH8WDR0ckUA?usp=share_link
