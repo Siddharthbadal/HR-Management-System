@@ -19,12 +19,12 @@
 
 
 {% block content %}
-    <div class='container card p-3 border-dark mt-5' style="width: 30%;">
+    <div class='container card p-3 border-dark mt-5 w-50 login-page-width'>
             <!-- message from forms.py -->
 
 
         <div class='text-center'>
-            
+
                 {% if form.errors %}
                 <div class="text-center alert alert-danger alert-dismissible fade show mt-2 mb-1 {{message.tags}}" role="alert" style="width:100%;" >
                     <strong class="text-dark m-auto alert-heading">
@@ -44,16 +44,18 @@
                 </i>
         </a>
                     
-        <form action="" method='POST' autocomplete="off" novalidate>
+        <form action="" method='POST' autocomplete="off" novalidate >
                     {% csrf_token %}
                         {{ form.username | as_crispy_field }}
                         {{ form.password | as_crispy_field }}
-                        <br>
-                        <hr>
+                <br>
+                <hr>
+
             <div class='d-grid gap-2'>
                 <button type='submit' class='btn btn-primary'>SignIn</button>
                 <a href="{% url 'home' %}" class='btn btn-secondary'>Cancel</a>
             </div>
+
         </form>
 
 

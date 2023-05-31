@@ -114,8 +114,8 @@ class Candidate(models.Model):
     # experience - work
     company = models.CharField(max_length=100, null=True, blank=True)
     role = models.CharField(max_length=100, null=True, blank=True)
-    started_at =models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
-    ended_at = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    started_at =models.DateField(auto_now=False,  null=True, blank=True)
+    ended_at = models.DateField(auto_now=False, null=True, blank=True)
     notice_period = models.CharField(max_length=2, null=True, blank=True)
     about_role= models.TextField(null=True, blank=True)
     hybrid_office = models.BooleanField(null=True, blank=True, verbose_name="Work From Office")
@@ -155,15 +155,26 @@ class Candidate(models.Model):
         return f"{self.firstname} {self.lastname}"
     
 
-
     
 class Email(models.Model):
+    employee = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    status = models.CharField(max_length=255, null=True, blank=True)
-
+    status = models.TextField()
     subject = models.CharField(max_length=255)
     message = models.CharField(max_length=500)
+    sent_on = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.name 
+    
+
+
+class Chat_candidate(models.Model):
+    candidate_email = models.CharField(max_length=100)
+    user = models.CharField(max_length=100)
+    chat = models.CharField(max_length=500)
+    date_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user 

@@ -100,6 +100,7 @@
             <th style="width:12%">Job </th>
             <th style="width:12%"> Applied</th>
             <th colspan="2" style="width:25%">
+                <i class="fas fa-tools"></i>
                 &nbsp;Actions </th>
         </tr>
         
@@ -148,8 +149,12 @@
                 {{ candidate.created_at |date:'M d Y' }}</td>
             
             <td class='btn-side' >
-                <a href="{% url 'candidate' candidate.id %}" class="btn btn-secondary  text-light " title="View">
+                <a href="{% url 'candidate' candidate.id %}" class="btn btn-secondary btn-sm  text-light " title="View">
                     <i class="fas fa-user-alt" style='font-size:20px;'></i>
+                </a> 
+
+                <a href="{% url 'chat_candidate' candidate.id %}" class="btn btn-info btn-sm my-btn2 ms-1 text-light" title="About candidate">
+                    <i class="fas fa-comment-alt" style='font-size:20px;'></i>
                 </a> 
 
 
@@ -183,8 +188,9 @@
             </td>
 
             {% empty %}
-            <td colspan='6' class='text-denger'>
-                <strong>No data avilable!</strong>
+            <td colspan='8' class='text-denger'>
+                
+                <strong>No data avilable for {{ request.GET.q | title}}</strong>
             </td>
         </tr>
         {% endfor %}

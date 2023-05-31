@@ -19,6 +19,16 @@ a{
     text-decoration: none;
 }
 
+.card-chat{
+    width: 90%;
+    font-size: 14px;
+    overflow: auto;
+    height: 750px;
+    scroll-behavior: smooth;
+}
+
+
+
 
 /* Keep the footer always down */
 .wrapper {
@@ -118,5 +128,8 @@ a{
         display: flex;
         flex-wrap: nowrap;
     }
+   
+
 
 }
+

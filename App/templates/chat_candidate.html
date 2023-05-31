@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+
+
+
+  {% block title %} Chat Candidate {% endblock title %}
+
+    {% block navbar-fixed %} fixed-top p-7{% endblock navbar-fixed %}
+
+    {% block nav-content %} 
+
+       
+            <a href="" id="top" class="navbar-brand flex-grid-1 flex-grow-1 text-center text-light to_center">
+                <i class="fas fa-comment-alt"></i> &nbsp; Chat Candidate
+            </a>
+    
+            <a href="{% url 'backend' %}" class="navbar-brand  text-light" id="btn-nav" style="float:right;">
+                    <i class="fas fa-arrow-left fa-size"></i>    
+            </a>
+       
+
+    {% endblock nav-content %}
+    
+    {% block footer %}  
+
+    {% endblock footer %}
+
+
+    {% block content %}
+
+    <div class="container mb-3 mt-3 bg-gray">
+                <button class="btn btn-dark border-light" style="cursor:pointer;">
+                        Candidate:
+                        <strong>{{ candidate.firstname}} {{candidate.lastname}}</strong>
+                </button>
+                
+                <button class="btn border-dark
+                {% if candidate.app_status == 'Pending' %} btn-primary
+                {% elif candidate.app_status == 'Approved' %} btn-success
+                {% elif candidate.app_status == 'Hold' %} btn-info
+                {% else %} btn-danger
+                {% endif %}"
+                >
+                        {{ candidate.app_status}}
+                </button>
+    </div>
+
+    <div class="container mt-3 mb-5 card-chat">
+        <div class="card border p-4 " id="'top">
+                <form action="" method="POST">
+                        {% csrf_token %}
+                <input type="hidden" name="candidate_email" value="{{ candidate.email}}">
+                <input type="hidden" name="user" value="{{ user.get_username}}">
+                <div class="input-group mb-4">
+                        <input type="text" name="chat" class="form-control" placeholder="your comment.. .">
+                        <button class="btn btn-outline-dark" type="submit">Submit</button>
+
+                </div>
+                <hr class="text-primary border-5">
+                </form>
+
+        {% for data in chat_candidate %}
+
+        {% if data.candidate_email == candidate.email %}
+                {% for x in list_users %} 
+               
+                {% if x.is_superuser %} 
+                        {% if data.user == x.username %}
+
+                                {% include 'partials/from_admin.html' %}
+
+                        {% else %} 
+
+                                {% include 'partials/from_user.html' %}
+
+                        {% endif %}
+                {% endif %}
+                {% endfor %}
+        {% endif %}
+        {% endfor %}
+
+
+
+
+                <!-- go to top -->
+<div class="text-end">
+        <a href="#top" class="btn btn-outline-dark mt-4 my-btn2">
+                <i class="fas fa-arrow-up"></i>
+        </a>
+</div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock content %}

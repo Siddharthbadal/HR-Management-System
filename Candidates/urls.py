@@ -19,4 +19,6 @@ urlpatterns = [
     path('delete_candidate/<int:id>/', views.delete_candidate, name='delete_candidate'),
     path('email', views.email, name='email'),
 
+    path('chat_candidate/<int:id>', views.chat_candidate, name='chat_candidate')
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

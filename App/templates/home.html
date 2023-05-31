@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container card p-3 border-dark text-center mt-5" style="width:50%;">
+    <div class="container card p-3 border-dark text-center mt-5" style="width:60%;">
 
         {% include 'partials/successMessages.html' %}
 
@@ -9,19 +9,20 @@
 
 
 
-
+            <div class='home-page-div' style="width:98%;">
 
             <h1>Applications </h1>
-            <h5 class="mt-3">
-                Fullstack: SDE-01 &nbsp;
-                Backend: BAC-01 &nbsp;
-                Frontend: FRE-01 &nbsp;
+            <h5 class="mt-3 home-heading">
+                Fullstack: SDE-01  <br>
+                Backend: BAC-01  <br>
+                Frontend: FRE-01 
             </h5>
             <hr>
             <div class="d-grid gap-2 mt-4">
                 <a href="{% url 'register' %}" class="btn btn-info">Register</a>
                 <a href="{% url 'login' %}" class="btn btn-primary w-1/2">SignIn</a>
             </div>
+        </div>
 
         </div>
 

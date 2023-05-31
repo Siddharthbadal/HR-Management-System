@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-from .forms import CandidateForm, EmailForm
-from .models import Candidate, Email
+from .forms import CandidateForm, EmailForm, Chat_candidatedForm
+from .models import Candidate, Email, Chat_candidate
 from django.http import HttpResponseRedirect
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
@@ -11,6 +11,7 @@ from django.db.models import Q
 from django.db.models.functions import Concat 
 from django.db.models import Value as Val 
 from django.core.mail import EmailMessage
+from django.contrib.auth.models import User 
 
 
 def home(request):
@@ -120,6 +121,7 @@ def email(request):
             email = request.POST.get('email'),
             subject = request.POST.get('subject'),
             message = request.POST.get('message'),
+            employee = request.POST.get('employee'),
         )
         print(Email)
         to_db.save()
@@ -141,28 +143,27 @@ def email(request):
 
 
 
+# simple messaging service among support staff and admin
+@csrf_protect
+@login_required(login_url='login')
+@cache_control(no_cache=True, must_revalidate=True,no_store=True)
+def chat_candidate(request, id):
+    candidate = Candidate.objects.get(pk=id)
+    chat_candidate = Chat_candidate.objects.all().order_by('-date_time')
+    list_users = User.objects.all()
+    form = Chat_candidatedForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('chat_candidate', id=candidate.id)
+    context = {
+        "form":form,
+        "chat_candidate": chat_candidate,
+        "list_users": list_users,
+        "candidate":candidate
+    }
+
+    return render(request, 'chat_candidate.html', context)
 
 
-# export to pdf 
-# @login_required(login_url='login')
-# @cache_control(no_cache=True, must_revalidate=True,no_store=True)
-# def download_candidate_pdf(request, id):
-#     c = Candidate.objects.get(pk=id)
-#     cookies = request.COOKIES
-#     options = {
-#         'page-size': 'Letter',
-#         'encoding': 'UTF-8',
-#         "enable-local-file-access": "",
-#         'cookie': [
-#             ('csrftoken', cookies['csrftoken']),
-#             ('sessionid', cookies['sessionid'])
-#         ]
-#     }
-#     # pass live url 
-    
-#     config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
-#     pdf = pdfkit.from_url('http://127.0.0.1:8000/candidate/'+str(c.id), False, options=options, configuration=config)
-#     res = HttpResponse(pdf, content_type="application/pdf")
-#     res['content-disposition'] = 'attachment; filename=candidate.pdf'
-#     return res 
+
 

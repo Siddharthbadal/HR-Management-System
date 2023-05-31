@@ -1,5 +1,5 @@
 from django import forms  
-from .models import Candidate, Email
+from .models import Candidate, Email, Chat_candidate
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from datetime import date 
@@ -45,9 +45,9 @@ class CandidateForm(forms.ModelForm):
         min_length=6,
         max_length=6,
         error_messages={'required': 'Job field can not be empty.'},
-        widget=forms.TextInput(attrs={'placeholder':'Job Code : SDE-01 | BAC-01','style':'font-size:14px; text-transform:uppercase', 
+        widget=forms.TextInput(attrs={'placeholder':'Job Code : SDE-01 | BAC-01 | FRE-01','style':'font-size:14px; text-transform:uppercase', 
         'autocomplete':'off',
-        'data-mask': 'AAA-00'
+        'x-data x-mask':'aaa-99'
         })
     )
     # using lowercase class
@@ -59,23 +59,18 @@ class CandidateForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder':'Email', 'style':'font-size:14px; text-transform:lowercase', 'autocomplete':'off'})
     )
     
-    # age = forms.CharField(
-    #     label="Age ", 
-    #     min_length=2, max_length=2, 
-    #     validators=[RegexValidator(r'^[0-9]*$', message="Only numbers are alowed!")], 
-    #     widget=forms.TextInput(attrs={'placeholder':'Age'})
-    # )
-
-           
+     
 
     
 
     mobile = forms.CharField(
         label="Contact ", 
-        max_length=10, 
+        max_length=12, 
         error_messages={'required': 'Contact field is required.'},
         validators=[RegexValidator(r'^[0-9]*$', message="Only numbers are alowed!")], 
-        widget=forms.TextInput(attrs={'placeholder':'Mobile', 'autocomplete':"off"})
+        widget=forms.TextInput(attrs={'placeholder':'Mobile', 'autocomplete':"off",
+        'x-data x-mask': '9999-999-999'
+                })
     )
 
     message = forms.CharField(
@@ -190,9 +185,6 @@ class CandidateForm(forms.ModelForm):
 
 
 
-
-
-
     class Meta:
         model = Candidate
         fields = "__all__"
@@ -256,79 +248,9 @@ class CandidateForm(forms.ModelForm):
 
         }
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        # fields = ['firstname', 'lastname','email','age','message']
-
-        # outside widget
-        # widgets={
-        #     'mobile': forms.TextInput(attrs={
-        #         'style':'font-size:14px', 
-        #         'placeholder':'Mobile',
-        #         'data-mask': '000 000 0000'
-        #         })
-        # }
-
-
-
-
-
-    # super function - over write all other function on fields
-    def __init__(self, *args, **kwargs):
-        super(CandidateForm, self).__init__(*args, **kwargs)
-
-        #1. control panel (optional method to control input and fields)
-        # self.fields['message'].required=True
-
-
-        #2. disable input individual fileld [ field freeze | data not sent to backend ]
-        # self.fields['experience'].disabled=True
-
-        #3. input read-only [ can send data to backend but can't change]
-        # self.fields['email'].widget.attrs.update({'readonly':'readonly'})
-
-
-        #4. select option placeholder in drop down
-        # wont work with admin readonly_fields
-        # self.fields["experience"].choices = [("", "Select your experience"),]+ list(self.fields["experience"].choices)[1:]
-
-        # self.fields["position"].choices = [("", "Current Role"),]+ list(self.fields["position"].choices)[1:]
-
-        
+       
 
     
-        #5. widget control [over write the values]
-        # self.fields['mobile'].widget.attrs.update({'style':'font-size:24px;', 'placeholder':'Phone'})
-
-        #6. freeze/disable multiple input fields 
-
-        # readonly = ['firstname', 'lastname', 'job']
-        # for field in readonly:
-        #     self.fields[field].widget.attrs['readonly']=True
-
-
-
-
-        # disable all inpute. make candidate details read only for backend.html on frontend 
-        # instance = getattr(self, 'instance', None)
-        # readonly_fields = ['experience','job','firstname', 'lastname', 'email', 'gender', 'birthdate', 'mobile', 'city', 'education','position','salary','cloud', 'languages', 'frameworks','databases','other_skills','message','profile_image', 'file', 'course', 'institution', 'course_started', 'course_finished', 'course_details', 'course_mode',
-        # 'company', 'role', 'started_at', 'ended_at', 'notice_period', 'about_role', 'hybrid_office', 'still_working','linkedin', 'github', 'project', 'portfolio']
-        # for field in readonly_fields:
-        #     if instance and instance.pk:
-        #         self.fields[field].disabled=True
-        # above function will not allow read only on admin as this is in super. so not accepted
 
 
 
@@ -351,12 +273,6 @@ class CandidateForm(forms.ModelForm):
             raise forms.ValidationError('Please enter the correct code!')
 
 
-    # def clean_age(self):
-    #     age = self.cleaned_data.get('age')
-    #     if age < '18' or age > '70':
-    #         raise forms.ValidationError("Age must be between 18 to 70")
-    #     return age
-    
     def clean_birthdate(self):
         birth = self.cleaned_data.get('birthdate')
         b = birth
@@ -372,15 +288,6 @@ class CandidateForm(forms.ModelForm):
             raise ValidationError("Please eneter the complete mobile number")
         return mobile
     
-    # def clean_file(self):
-    #     file = self.cleaned_data.get('file', False)
-    #     EXT = ['pdf', 'doc','docx']
-    #     ext = str(file).split('.')[-1]
-    #     type = ext.lower()
-    #     if type not in EXT:
-    #         raise forms.ValidationError("Only -PDF-DOC-DOCX files")
-    #     if file.size > 2 * 1048476:
-    #         raise forms.ValidationError("File should not be more than of 2 MB")
 
 
     def clean_course_started(self):
@@ -425,6 +332,14 @@ class EmailForm(forms.Form):
     class Meta:
         fields = "__all__"
             
+
+
+
+class Chat_candidatedForm(forms.ModelForm):
+    class Meta:
+        model = Chat_candidate
+        fields = "__all__"
+        
 
 
 

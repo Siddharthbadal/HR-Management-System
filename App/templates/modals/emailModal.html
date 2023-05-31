@@ -31,6 +31,7 @@
     <input type="hidden" name="name" value="{{ candidate.firstname}} {{candidate.lastname}}">
     <input type="hidden" name="email" value="{{ candidate.email}}">
     <input type="hidden" name="status" value="{{ candidate.app_status}} ">
+    <input type="hidden" name="employee" value="{{ user.get_username}} ">
 
     <input type="text" name="subject" class="form-control mb-2" placeholder="'subject" required>
     <textarea class='form-control' name="message" id="" cols="6" rows="10" placeholder="message" required></textarea>
