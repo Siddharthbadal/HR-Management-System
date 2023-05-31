@@ -27,7 +27,6 @@ Few of the features:
 
 
 =======
->>>>>>> 743b89e78fba9dae96cc966d1f82ba4885980249
 ### Tech Stack
 
     Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
@@ -36,7 +35,7 @@ Few of the features:
 Project is work in Progress.
 
 
-Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/
+Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/  [user-user1234]
 
 
 
