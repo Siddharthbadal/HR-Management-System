@@ -28,9 +28,6 @@ Few of the features:
 
     Django | Bootstrap | Railway app for database and deployment | PostgreSQL  |  AWS S3
 
-### Tech Stack
-
-    Django | Bootstrap | Railway app fro database and deployment | PostgreSQL
 
 
 
