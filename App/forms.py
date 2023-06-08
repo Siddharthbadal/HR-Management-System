@@ -65,11 +65,11 @@ class CandidateForm(forms.ModelForm):
 
     mobile = forms.CharField(
         label="Contact ", 
-        max_length=12, 
+        max_length=10, 
         error_messages={'required': 'Contact field is required.'},
         validators=[RegexValidator(r'^[0-9]*$', message="Only numbers are alowed!")], 
         widget=forms.TextInput(attrs={'placeholder':'Mobile', 'autocomplete':"off",
-        'x-data x-mask': '9999-999-999'
+       
                 })
     )
 
@@ -154,7 +154,7 @@ class CandidateForm(forms.ModelForm):
         max_length=100, 
         error_messages={'required': 'We need your linkedin account url.'},
         validators=[RegexValidator(r'^https://[a-z]{2,3}[.]linkedin[.]com/.*$', message="enter a valid linkedIn url.")], 
-        widget=forms.TextInput(attrs={'placeholder':'linkedIn', 'style':'font-size:14px;', 'autocomplete':'off'})
+        widget=forms.TextInput(attrs={'placeholder':'https://www.linkedin.com/', 'style':'font-size:14px;', 'autocomplete':'off'})
     )
 
     github = LowerCase(
@@ -162,14 +162,14 @@ class CandidateForm(forms.ModelForm):
         max_length=100, 
         error_messages={'required': 'Please enter your active github account url.'},
         validators=[RegexValidator(r'^https://[a-z]{2,3}[.]github[.]com/.*$', message="enter a valid github url.")], 
-        widget=forms.TextInput(attrs={'placeholder':'github', 'style':'font-size:14px;', 'autocomplete':'off'})
+        widget=forms.TextInput(attrs={'placeholder':'https://www.github.com/', 'style':'font-size:14px;', 'autocomplete':'off'})
     )
 
     project = LowerCase(
-        label="Project ", 
+        label="Recent Project ", 
         max_length=100,
         required=False,     
-        widget=forms.TextInput(attrs={'placeholder':'recent project (optional)', 'style':'font-size:14px;' ,'autocomplete':'off'})
+        widget=forms.TextInput(attrs={'placeholder':'optional', 'style':'font-size:14px;' ,'autocomplete':'off'})
     )
 
     portfolio = LowerCase(

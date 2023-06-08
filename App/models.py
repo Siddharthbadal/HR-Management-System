@@ -112,10 +112,10 @@ class Candidate(models.Model):
 
 
     # experience - work
-    company = models.CharField(max_length=100, null=True, blank=True)
-    role = models.CharField(max_length=100, null=True, blank=True)
-    started_at =models.DateField(auto_now=False,  null=True, blank=True)
-    ended_at = models.DateField(auto_now=False, null=True, blank=True)
+    company = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    started_at =models.DateField(auto_now=False)
+    ended_at = models.DateField(auto_now=False)
     notice_period = models.CharField(max_length=2, null=True, blank=True)
     about_role= models.TextField(null=True, blank=True)
     hybrid_office = models.BooleanField(null=True, blank=True, verbose_name="Work From Office")
