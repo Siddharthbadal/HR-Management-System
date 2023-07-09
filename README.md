@@ -29,8 +29,6 @@ Few of the features:
     Django | Bootstrap | Railway app for database and deployment | PostgreSQL  |  AWS S3
 
 
-![img](https://drive.google.com/file/d/1Yu1W_v_lQb7nF6ZzyKsxo4j8C7jduS-D/view?usp=sharing)
-
 
 Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/ 
 access with : user/user1234
