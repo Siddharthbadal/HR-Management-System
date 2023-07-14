@@ -1,6 +1,6 @@
 # HR Management System
 
-A Human Resource Management job portal to manage applications and candidates details.
+Full Stack project Human Resource Management job portal to manage applications and candidates details.
 
 Few of the features:
 
@@ -10,7 +10,7 @@ Few of the features:
 
     - User Validations on fronted (for user inputs) and backend (for admin panel) 
 
-     - forms widegts on multiple feilds to manage values, labels, and input
+    - forms widegts on multiple feilds to manage values, labels, and input
 
     - Custom admin panel for admin and account with admin permissions.
 
@@ -20,18 +20,26 @@ Few of the features:
 
     - Send email to candidates.
 
-    - One to one messages for each candidates between admin and staff.
+    - One to one chat messages for each candidates between admin and staff.
 
 
 
 ### Tech Stack
 
-    Django | Bootstrap | Railway app for database and deployment | PostgreSQL  |  AWS S3
+    Django | Bootstrap | Railway app | PostgreSQL  |  AWS S3
 
 
 
 Live Demo (Desktop Version): https://hr-management-system-production.up.railway.app/ 
 access with : user/user1234
 
-View images here:
-https://drive.google.com/drive/folders/1er7UAC-zkNrj1bCFb7um7UH8WDR0ckUA?usp=share_link
+
+![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/admin-panel1.png)
+
+![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/three.png)
+
+![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/two.png)
+
+![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/four.png)
+
+![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/admin-panel2.png)
