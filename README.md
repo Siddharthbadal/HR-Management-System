@@ -2,34 +2,29 @@
 
 Full Stack project Human Resource Management job portal to manage applications and candidates details.
 
-Few of the features:
+### Features
 
-
-    - User registration with multiple fileds; checkboxs, dropdowns, date picker, update documents.
-    - Form validation on each fileds. Eg. date validation, email validation, strings and integer validations etc
-    - User Validations on fronted (for user inputs) and backend (for admin panel) 
-    - forms widegts on multiple feilds to manage values, labels, and input
-    - Custom admin panel for admin and account with admin permissions.
-    - Customized admin panel with read only fields and filters for admin and support staff.
-    - Note and status updation functionality for admin.
-    - Send email to candidates.
-    - One to one chat messages for each candidates between admin and staff.
-
+ - User registration with multiple fileds; checkboxs, dropdowns, date picker, update documents.
+ - Form validation on each fileds. Eg. date validation, email validation, strings and integer validations etc
+ - User Validations on fronted (for user inputs) and backend (for admin panel)
+ - Forms widegts on multiple feilds to manage values, labels, and input
+ - Custom admin panel for admin and account with admin permissions.
+ - Customized admin panel with read only fields and filters for admin and support staff.
+ - Note and status updation functionality for admin.
+ - Send email to candidates.
+ - One to one chat messages for each candidates between admin and staff.
 
 
 ### Tech Stack
 
     Django | Bootstrap | Railway app | PostgreSQL  |  AWS S3
 
+    
 
+![admin-panel1](https://github.com/Siddharthbadal/HR-Management-System/assets/55015090/128e277c-2aff-4077-90ef-31d6f804166c)
 
+![candidates-list](https://github.com/Siddharthbadal/HR-Management-System/assets/55015090/82f9fb3f-2857-44dd-b761-13df9ac14e46)
 
-![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/admin-panel1.png)
+![login](https://github.com/Siddharthbadal/HR-Management-System/assets/55015090/e9334c12-be02-44b4-b9cb-9cc65c36a469)
 
-![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/three.png)
-
-![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/two.png)
-
-![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/four.png)
-
-![img](https://raw.githubusercontent.com/Siddharthbadal/HR-Management-System/main/screenshots/admin-panel2.png)
+![admin-panel2](https://github.com/Siddharthbadal/HR-Management-System/assets/55015090/91afb768-0caa-4803-9b8e-ae5cbbbb56bf)
